@@ -1,0 +1,7 @@
+@mixin brand-title {
+  font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', ui-monospace, monospace;
+  font-weight: 500;
+  font-size: clamp(1.75rem, 5vw, 3.25rem);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}

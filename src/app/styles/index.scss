@@ -1,0 +1,12 @@
+@use 'tokens' as *;
+@use 'reset';
+
+:root {
+  color-scheme: dark;
+  --color-bg-base: #{$color-bg-base};
+  --color-bg-elevated: #{$color-bg-elevated};
+  --color-fg-primary: #{$color-fg-primary};
+  --color-fg-secondary: #{$color-fg-secondary};
+  --color-accent: #{$color-accent};
+  --color-border: #{$color-border};
+}

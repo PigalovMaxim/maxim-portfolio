@@ -1,0 +1,9 @@
+packages:
+  - '.'
+
+autoInstallPeers: true
+strictPeerDependencies: false
+verifyDepsBeforeRun: false
+
+allowBuilds:
+  '@parcel/watcher': true
