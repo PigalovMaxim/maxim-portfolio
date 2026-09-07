@@ -1,0 +1,35 @@
+@use '../../../app/styles/mixins' as *;
+@use '../../../app/styles/tokens' as *;
+
+.section {
+  @include flex-column;
+  @include gap(20px);
+  width: min(720px, 100%);
+  position: relative;
+}
+
+.title {
+  @include section-title;
+  color: $color-fg-secondary;
+}
+
+.list {
+  @include flex-center;
+  @include flex-wrap;
+  @include gap(12px);
+  list-style: none;
+}
+
+.status,
+.error {
+  @include body-text;
+  position: relative;
+}
+
+.status {
+  color: $color-fg-secondary;
+}
+
+.error {
+  color: $color-danger;
+}

@@ -4,8 +4,10 @@
 .page {
   @include flex-center;
   @include flex-column;
+  @include gap(48px);
   min-height: 100%;
   width: 100%;
+  padding: 48px 24px;
   position: relative;
   background:
     radial-gradient(ellipse 80% 60% at 50% 40%, $color-accent-soft 0%, transparent 55%),
