@@ -20,5 +20,6 @@ export default defineConfig({
         changeOrigin: true,
       },
     },
+    allowedHosts: ['maxim-portfolio.ru', 'www.maxim-portfolio.ru', '148.135.209.114'],
   },
 })
