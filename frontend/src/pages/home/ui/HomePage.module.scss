@@ -1,5 +1,5 @@
-@use '../../../app/styles/mixins' as *;
-@use '../../../app/styles/tokens' as *;
+@use 'app/styles/mixins' as *;
+@use 'app/styles/tokens' as *;
 
 .page {
   @include flex-center;

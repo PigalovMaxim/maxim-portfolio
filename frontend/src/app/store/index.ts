@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import '@/entities/skill/api/skillApi'
+import '@/entities/skill'
 import { baseApi } from '@/shared/api'
 
 export const store = configureStore({

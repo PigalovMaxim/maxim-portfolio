@@ -1,0 +1,61 @@
+services:
+  db:
+    image: postgres:16 
+    container_name: maxim-portfolio-db
+    restart: unless-stopped  # Автоматически перезапускать, если контейнер упал (кроме случая, когда остановили вручную)
+    environment:
+      POSTGRES_USER: maxim 
+      POSTGRES_PASSWORD: maxim
+      POSTGRES_DB: maxim_portfolio
+    ports:
+      - '5432:5432'  # Проброс порта: слева порт на сервере, справа порт внутри контейнера
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U maxim -d maxim_portfolio']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    pull_policy: build  # Каждый docker compose up пересобирает образ бэкенда
+    container_name: maxim-portfolio-backend
+    restart: unless-stopped
+    ports:
+      - '3001:3001'  # Порт бэкенда на сервере: порт внутри контейнера
+    environment:
+      PORT: 3001
+      DATABASE_URL: postgres://maxim:maxim@db:5432/maxim_portfolio
+      CORS_ORIGIN: http://localhost:5173
+    depends_on:
+      db:
+        condition: service_healthy
+
+  microservice:
+    build: ./backend-microservice
+    container_name: maxim-portfolio-microservice
+    restart: unless-stopped
+    ports:
+      - '3002:3002'
+    environment:
+      PORT: 3002
+      CORS_ORIGIN: http://localhost:5173
+    depends_on:
+      - backend
+
+  frontend:
+    build: ./frontend
+    container_name: maxim-portfolio-frontend
+    restart: unless-stopped
+    environment:
+      VITE_BACKEND_URL: http://backend:3001
+      VITE_MICROSERVICE_URL: http://microservice:3002
+    ports:
+      - '5173:5173'
+    depends_on:
+      - backend
+      - microservice
+
+volumes:
+  postgres_data:
