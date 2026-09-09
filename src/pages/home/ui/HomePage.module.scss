@@ -38,6 +38,22 @@
   color: $color-accent;
 }
 
+.statsButton {
+  @include flex-center;
+  padding: 10px 24px;
+  border: 1px solid $color-accent;
+  border-radius: 6px;
+  background: transparent;
+  color: $color-accent;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+
+  &:hover {
+    background: $color-accent-soft;
+  }
+}
+
 @keyframes fade-rise {
   from {
     opacity: 0;
