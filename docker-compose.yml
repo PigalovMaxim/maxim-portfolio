@@ -73,10 +73,8 @@ services:
     restart: unless-stopped
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
-      - GF_SERVER_ROOT_URL=http://maxim-portfolio.ru/grafana/
-      - GF_SERVER_DOMAIN=maxim-portfolio.ru
-      - GF_SERVER_SERVE_FROM_SUB_PATH=true
-      - GF_SERVER_PROTOCOL=http
+      - GF_SERVER_ROOT_URL=http://localhost:3000/
+      - GF_SERVER_SERVE_FROM_SUB_PATH=false
     volumes:
       - grafana_data:/var/lib/grafana
     mem_limit: 256m
