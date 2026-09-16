@@ -20,6 +20,8 @@ services:
     pull_policy: build  # Каждый docker compose up пересобирает образ бэкенда
     container_name: maxim-portfolio-backend
     restart: unless-stopped
+    ports:
+      - '3001:3001'  # Порт бэкенда на сервере: порт внутри контейнера
     environment:
       PORT: 3001
       DATABASE_URL: postgres://maxim:maxim@db:5432/maxim_portfolio
@@ -32,6 +34,8 @@ services:
     build: ./backend-microservice
     container_name: maxim-portfolio-microservice
     restart: unless-stopped
+    ports:
+      - '3002:3002'
     environment:
       PORT: 3002
       CORS_ORIGIN: http://localhost:5173
@@ -45,6 +49,8 @@ services:
     environment:
       VITE_BACKEND_URL: http://backend:3001
       VITE_MICROSERVICE_URL: http://microservice:3002
+    ports:
+      - '5173:5173'
     depends_on:
       - backend
       - microservice
@@ -56,6 +62,8 @@ services:
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
+    ports:
+      - '9090:9090'
 
   grafana:
     image: grafana/grafana:latest
@@ -69,6 +77,8 @@ services:
       - GF_FEATURE_TOGGLES_USE_SESSION_STORAGE_FOR_REDIRECTION=false
     volumes:
       - grafana_data:/var/lib/grafana
+    ports:
+      - '3000:3000'
 
 volumes:
   postgres_data:
