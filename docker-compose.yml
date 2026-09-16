@@ -79,7 +79,6 @@ services:
       - GF_FEATURE_TOGGLES_USE_SESSION_STORAGE_FOR_REDIRECTION=false
     volumes:
       - grafana_data:/var/lib/grafana
-    mem_limit: 256m
     ports:
       - '3000:3000'
 
