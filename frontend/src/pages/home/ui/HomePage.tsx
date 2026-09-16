@@ -16,9 +16,14 @@ export function HomePage() {
         Maxim<span>-portfolio</span>
       </h1>
       <SkillsList />
-      <button className={styles.statsButton} onClick={handleStats}>
-        Get Stats
-      </button>
+      <div className={styles.actions}>
+        <button className={styles.statsButton} onClick={handleStats}>
+          Get Stats
+        </button>
+        <a className={styles.statsButton} href="/grafana">
+          Grafana
+        </a>
+      </div>
     </main>
   )
 }

@@ -38,6 +38,13 @@
   color: $color-accent;
 }
 
+.actions {
+  @include flex-center;
+  @include gap(12px);
+  position: relative;
+  flex-wrap: wrap;
+}
+
 .statsButton {
   @include flex-center;
   padding: 10px 24px;
@@ -46,6 +53,7 @@
   background: transparent;
   color: $color-accent;
   font-size: 14px;
+  text-decoration: none;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 
