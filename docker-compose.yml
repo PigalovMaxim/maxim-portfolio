@@ -76,6 +76,7 @@ services:
       - GF_SERVER_ROOT_URL=https://maxim-portfolio.ru/grafana/
       - GF_SERVER_SERVE_FROM_SUB_PATH=true
       - GF_SERVER_PROTOCOL=http
+      - GF_FEATURE_TOGGLES_USE_SESSION_STORAGE_FOR_REDIRECTION=false
     volumes:
       - grafana_data:/var/lib/grafana
     mem_limit: 256m
