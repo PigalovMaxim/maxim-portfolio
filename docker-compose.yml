@@ -73,7 +73,7 @@ services:
     restart: unless-stopped
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
-      - GF_SERVER_ROOT_URL=http://maxim-portolio/grafana/
+      - GF_SERVER_ROOT_URL=http://maxim-portfolio.ru/grafana/
       - GF_SERVER_SERVE_FROM_SUB_PATH=true
     volumes:
       - grafana_data:/var/lib/grafana
